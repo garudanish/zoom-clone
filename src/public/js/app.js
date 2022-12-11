@@ -14,7 +14,6 @@ socket.addEventListener("open", () => {
 });
 
 socket.addEventListener("message", (message) => {
-  console.log(`New Message: ${message.data}`);
   const li = document.createElement("li");
   li.innerText = message.data;
   messageList.append(li);
@@ -35,4 +34,5 @@ nickForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const input = nickForm.querySelector("input");
   socket.send(makeMessage("nickname", input.value));
+  input.value = "";
 });
